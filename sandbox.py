@@ -7,12 +7,15 @@ keyword_category = {
 
 # Testing for incramentals
 text_file = "def if print owl rain ( ) , : 2 1 3"
-defcheck = 'def'
-def test_for_incramentals(keyword_category, text_file, defcheck):
-    if defcheck in text_file:
+def test_for_incramentals(keyword_category, text_file):
+    if 'def' in text_file:
         keyword_category['def'] += 1
+    if 'if' in text_file:
+        keyword_category['if'] += 1
+    if 'print' in text_file:
+        keyword_category['print'] += 1
     return keyword_category
 
 # main test program
-test_for_incramentals(keyword_category, text_file, defcheck)
+test_for_incramentals(keyword_category, text_file)
 print(keyword_category)

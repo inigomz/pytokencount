@@ -37,13 +37,60 @@ def remove_whitespace(input_file, output_file):
         for line in processed_lines:
             f.write(line + '\n')
 
-def check_keywords(output_file):
-    
-    # Create a dictionary of keywords. Since this is a small project I can get away with only listing keywords used
-    # for the example code.
-    reserved_keywords = {
-        'def',
-        'if',
-        'print',
+# Create multiple dictionaries of keywords, identifiers, etc. Since this is a small project I can get away with only listing keywords used
+# for the example code.
+reserved_keywords = {
+    'def' : 0,
+    'if' : 0,
+    'print' : 0,
+    'return' : 0,
     }
+reserved_identifiers = {
+    'calculate_sum' : 0,
+    'a' : 0,
+    'b' : 0,
+    '__name__' : 0,
+    '__main__' : 0,
+    'num1' : 0,
+    'num2' : 0,
+    'result' : 0,
+    }
+reserved_operators = {
+    '=' : 0,
+    '==' : 0,
+    '+' : 0,
+    }
+reserved_delimiters = {
+    '(' : 0,
+    ')' : 0,
+    ':' : 0,
+    ',' : 0,
+    '"' : 0,
+    }
+reserved_litterals = {
+    '10' : 0,
+    '20' : 0,
+    }
+def check_keywords(reserved_keywords, output_file):
+    # Uses if statements to check if each keyword is in the output file. If there is a keyword, increase its value by one.
+    # The main idea here is simple, easy to read code. I don't need to implement anything complex and should have a time complexity of 0(1)
+    if 'def' in output_file:
+        reserved_keywords['def'] += 1
+    if 'if' in output_file:
+        reserved_keywords['if'] += 1
+    if 'print' in output_file:
+        reserved_keywords['print'] += 1
+    if 'return' in output_file:
+        reserved_keywords['return'] += 1
+    print('Keywords have been successfuly processed')
+    return reserved_keywords
+    
+def check_identifiers (reserved_identifiers, output_file):
+    pass
+def check_operators (reserved_operators, output_file):
+    pass
+def check_delimiters (reserved_delimiters, output_file):
+    pass
+def check_litterals (reserved_litterals, output_file):
+    pass
     #TODO: Print the lexemes and count the number of keyword tokens.
