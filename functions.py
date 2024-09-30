@@ -72,25 +72,40 @@ reserved_litterals = {
     '20' : 0,
     }
 def check_keywords(reserved_keywords, output_file):
-    # Uses if statements to check if each keyword is in the output file. If there is a keyword, increase its value by one.
-    # The main idea here is simple, easy to read code. I don't need to implement anything complex and should have a time complexity of 0(1)
-    if 'def' in output_file:
-        reserved_keywords['def'] += 1
-    if 'if' in output_file:
-        reserved_keywords['if'] += 1
-    if 'print' in output_file:
-        reserved_keywords['print'] += 1
-    if 'return' in output_file:
-        reserved_keywords['return'] += 1
-    print('Keywords have been successfuly processed')
-    return reserved_keywords
+    for keyword in reserved_keywords:
+        if keyword in output_file:
+            reserved_keywords[keyword] += 1
+        else:
+            print('Keywords have been successfuly processed')
+            return reserved_keywords
     
 def check_identifiers (reserved_identifiers, output_file):
-    if 'calculate_sum' in output_file
+    for identifier in reserved_identifiers:
+        if identifier in output_file:
+            reserved_identifiers[identifier] += 1
+        else:
+            print('Identifiers have successfully been processed')
+            return reserved_identifiers
 def check_operators (reserved_operators, output_file):
-    pass
+    for operator in reserved_operators:
+        if operator in output_file:
+            reserved_operators[operator] += 1
+        else:
+            print('Operators have successfully been processed')
+            return reserved_operators
 def check_delimiters (reserved_delimiters, output_file):
-    pass
+    for delimiter in reserved_delimiters:
+        if delimiter in output_file:
+            reserved_delimiters[delimiter] += 1
+        else:
+            print('Delimiters have successfully been processed')
+            return reserved_delimiters
 def check_litterals (reserved_litterals, output_file):
-    pass
+    for litteral in reserved_litterals:
+        if litteral in output_file:
+            reserved_litterals[litteral] += 1
+        else:
+            print('Litterals have successfully been processed')
+            return reserved_litterals
+    
     #TODO: Print the lexemes and count the number of keyword tokens.

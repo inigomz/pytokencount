@@ -2,48 +2,41 @@ class MissingKeywordError(Exception):
     def __init__(self, message):
         self.message = message
         super().__init__(self, message)
+from functions import *
 
-def remove_whitespace(input_file, output_file):
-    # Read the input file. In this case, it's a text file.
-    with open(input_file, 'r') as f:
-        # Side comment: If i need to read lines for a large database or smth, it's best that I create a hint parameter
-        # just so I can avoid crashing my pc. Thank you for not making this overkill.
-        lines = f.readlines()
 
-    # Empty set that will hold each line in the text file as an element of the set.
-    processed_lines = []
-    # Returns a copy of a string with whitespaces and comments removed.
-    for line in lines:
-        if '#' in line:
-            line = line[:line.index('#')]
-            line = line.strip()
-        if line:
+def menu_generator():
+    '''
+    Infinite generator used for the menu.
+    The reason why I would use a generator over something else is because I didn't want this to get stored in memory, just in case a user
+    has a relatively large contact list for whatever reason.
+    '''
+    yield "1. Remove Whitespaces"
+    yield "2. Count all tokens"
+    yield "3. Show a Lexeme and Token Table"
+    yield "4. Clear tokens"
+    yield "5. Exit the program"
 
-        # Remove any additional comments using strip(), then use some sort of separator (in this case it's split()) 
-        # to split and discard the rest of the whitespaces. We re-add a space using the join() and append() function to
-        # concacenate the substrings with extra spaces removed.
+while True:
+    menu = menu_generator()
 
-        # What we get is no more whitespace. Each line becomes an element of the processed lines set (Line 12).
-        # We add a string containing "space" in order to recombine the rest of the substrings.
-        
-            spaces = line.split()
-            line = ' '.join(spaces)
-            processed_lines.append(line)
-
-    # We then open a new file and make it writable. Since each element of the set is a line, we write each element to 
-    # the new file and separate each element with a \n. This gives us a new text file with no whitespaces and we are
-    # ready to start processing the lexemes and tokens.
-    with open(output_file, 'w') as f:
-        for line in processed_lines:
-            f.write(line + '\n')
-
-def check_keywords(output_file):
-    
-    # Create a dictionary of keywords. Since this is a small project I can get away with only listing keywords used
-    # for the example code.
-    reserved_keywords = {
-        'def',
-        'if',
-        'print',
-    }
-    #TODO: Print the lexemes and count the number of keyword tokens.
+    print("*** PYTHON TOKEN/LEXEME COUNTER MAIN MENU ***")
+    for item in menu:
+        print(item)
+    option = int(input("Enter menu choice: "))
+    try:
+        if option == 1:
+            remove_whitespace()
+        if option == 2:
+            modify_contact(contacts, id, first_name, last_name)
+        if option == 3:
+            delete_contact(id, contacts)
+        if option == 4:
+            sort_contacts(contacts)
+        if option == 5:
+            find_contact(contacts)
+        if option == 6:
+            print("\nThank you for using the program!")
+            break
+    except ValueError:
+        print("\nInvalid attempt. Please try again.")

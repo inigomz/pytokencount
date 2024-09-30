@@ -20,6 +20,7 @@ def test_for_loop_incramentals(keyword_category, text_file):
     for keyword in keyword_category:
         if keyword in text_file:
             keyword_category[keyword] += 1
+            print(keyword_category)
         else:
             return keyword_category
 # main test program
