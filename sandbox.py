@@ -16,6 +16,13 @@ def test_for_incramentals(keyword_category, text_file):
         keyword_category['print'] += 1
     return keyword_category
 
+def test_for_loop_incramentals(keyword_category, text_file):
+    for keyword in keyword_category:
+        if keyword in text_file:
+            keyword_category[keyword] += 1
+        else:
+            return keyword_category
 # main test program
-test_for_incramentals(keyword_category, text_file)
+#test_for_incramentals(keyword_category, text_file)
+test_for_loop_incramentals(keyword_category, text_file)
 print(keyword_category)

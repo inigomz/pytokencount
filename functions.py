@@ -86,7 +86,7 @@ def check_keywords(reserved_keywords, output_file):
     return reserved_keywords
     
 def check_identifiers (reserved_identifiers, output_file):
-    pass
+    if 'calculate_sum' in output_file
 def check_operators (reserved_operators, output_file):
     pass
 def check_delimiters (reserved_delimiters, output_file):
