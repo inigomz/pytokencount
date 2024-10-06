@@ -73,7 +73,9 @@ reserved_litterals = {
     }
 
 # Main idea behind the check functions is to make everything as reusable as possible.
-# All of the check functions do the same thing but they call upon different dictionaries with different key: value pairs.
+
+# All of the check functions do the same thing with ONE exception: 
+# They call upon different dictionaries with different key: value pairs.
 def check_keywords(reserved_keywords, output_file):
     for keyword in reserved_keywords:
         if keyword in output_file:
@@ -112,3 +114,6 @@ def check_litterals (reserved_litterals, output_file):
             return reserved_litterals
     
     #TODO: Print the lexemes and count the number of keyword tokens.
+
+def show_lexemes ():
+    pass
