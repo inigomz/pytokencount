@@ -4,7 +4,8 @@ class MissingKeywordError(Exception):
         super().__init__(self, message)
 from functions import *
 
-
+input_file = ''
+output_file = ''
 def menu_generator():
     '''
     Infinite generator used for the menu.
@@ -27,7 +28,7 @@ while True:
     try:
         if option == 1:
             # Removes the whitespace
-            remove_whitespace()
+            remove_whitespace(input_file, output_file)
         if option == 2:
             # Checks for keywords, identifiers, operators, delimiters, and literals and adds them to a dictionary
             check_keywords(reserved_keywords)
