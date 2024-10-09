@@ -5,6 +5,9 @@ class MissingKeywordError(Exception):
         self.message = message
         super().__init__(self, message)
 
+# TODO: Hey big head, don't forget to use this variable.
+enable_docstring = False
+
 def remove_whitespace(input_file, output_file):
     # Read the input file. In this case, it's a text file.
     with open(input_file, 'r') as f:
@@ -16,6 +19,7 @@ def remove_whitespace(input_file, output_file):
     processed_lines = []
     # Returns a copy of a string with whitespaces and comments removed.
     for line in lines:
+
         if '#' in line:
             line = line[:line.index('#')]
             line = line.strip()
@@ -47,9 +51,13 @@ reserved_keywords = {
     'if' : 0,
     'print' : 0,
     'return' : 0,
+    'for' : 0,
+    'in' : 0,
+    'range' : 0
     }
 reserved_identifiers = {
     'calculate_sum' : 0,
+    'greet' : 0,
     'a' : 0,
     'b' : 0,
     '__name__' : 0,
@@ -57,6 +65,8 @@ reserved_identifiers = {
     'num1' : 0,
     'num2' : 0,
     'result' : 0,
+    'count' : 0,
+    'i' : 0,
     }
 reserved_operators = {
     '=' : 0,
@@ -73,6 +83,8 @@ reserved_delimiters = {
 reserved_litterals = {
     '10' : 0,
     '20' : 0,
+    'Hello, World!' : 0,
+    '5' : 0,
     }
 
 # Main idea behind the check functions is to make everything as reusable as possible.

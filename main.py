@@ -5,8 +5,8 @@ class MissingKeywordError(Exception):
 from functions import *
 
 # Initializing variables before calling the menu generator.
-input_file = 'input_file.txt'
-output_file = 'output_file.txt'
+input_file = input('Please enter a input file name: ')
+output_file = input('Please enter an output file name: ')
 
 
 def menu_generator():
@@ -18,7 +18,7 @@ def menu_generator():
     yield "1. Remove Whitespaces"
     yield "2. Count all tokens"
     yield "3. Show a Lexeme and Token Table"
-    yield "4. Clear tokens"
+    yield "4. Change input and output file"
     yield "5. Exit the program"
 
 while True:
@@ -43,9 +43,11 @@ while True:
             # Shows the table
             show_lexemes()
         if option == 4:
-            # Clears the tables
-            pass
+            # Changes the input file and output file.
+            input_file = input('Please enter a input file name: ')
+            output_file = input('Please enter an output file name: ')
         if option == 5:
+            # Ends the program.
             print('\nThank you for using the Program! Created by Inigo Zulueta')
             break
     except ValueError:
