@@ -36,6 +36,7 @@ def remove_whitespace(input_file, output_file):
     with open(output_file, 'w') as f:
         for line in processed_lines:
             f.write(line + '\n')
+    print('Whitespaces have been removed from the text.')
 
 # Create multiple dictionaries of keywords, identifiers, etc. Since this is a small project I can get away with only listing keywords used
 # for the example code.
@@ -77,12 +78,14 @@ reserved_litterals = {
 # All of the check functions do the same thing with ONE exception: 
 # They call upon different dictionaries with different key: value pairs.
 def check_keywords(reserved_keywords, output_file):
-    for keyword in reserved_keywords:
-        if keyword in output_file:
-            reserved_keywords[keyword] += 1
-        else:
-            print('Keywords have been successfuly processed')
-            return reserved_keywords
+    #TODO: find a way to initialize the output file so it sets each word as a string.
+    with open(output_file, 'r') as f:
+        processed_file = f.read() 
+        for keyword in reserved_keywords:
+            if keyword in processed_file:
+                reserved_keywords[keyword] += 1
+        print('Keywords have been successfuly processed')
+        return reserved_keywords
     
 def check_identifiers (reserved_identifiers, output_file):
     for identifier in reserved_identifiers:
@@ -116,4 +119,7 @@ def check_litterals (reserved_litterals, output_file):
     #TODO: Print the lexemes and count the number of keyword tokens.
 
 def show_lexemes ():
-    pass
+    print(reserved_keywords)
+    all_lexemes = reserved_keywords | reserved_identifiers | reserved_delimiters | reserved_litterals | reserved_operators
+    print(all_lexemes)
+    print(sum(all_lexemes.values()))

@@ -4,8 +4,11 @@ class MissingKeywordError(Exception):
         super().__init__(self, message)
 from functions import *
 
-input_file = ''
-output_file = ''
+# Initializing variables before calling the menu generator.
+input_file = 'input_file.txt'
+output_file = 'output_file.txt'
+
+
 def menu_generator():
     '''
     Infinite generator used for the menu.
@@ -31,14 +34,14 @@ while True:
             remove_whitespace(input_file, output_file)
         if option == 2:
             # Checks for keywords, identifiers, operators, delimiters, and literals and adds them to a dictionary
-            check_keywords(reserved_keywords)
-            check_identifiers(reserved_identifiers)
-            check_operators(reserved_operators)
-            check_delimiters(reserved_delimiters)
-            check_litterals(reserved_litterals)
+            check_keywords(reserved_keywords, output_file)
+            check_identifiers(reserved_identifiers, output_file)
+            check_operators(reserved_operators, output_file)
+            check_delimiters(reserved_delimiters, output_file)
+            check_litterals(reserved_litterals, output_file)
         if option == 3:
             # Shows the table
-            pass
+            show_lexemes()
         if option == 4:
             # Clears the tables
             pass
